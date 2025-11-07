@@ -1,0 +1,21 @@
+{
+  "name": "lab/dynamic-properties-system",
+  "description": "Laboratory work: Dynamic properties system with type-safe keys and centralized registry",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "DynamicProperties\\Core\\": "src/Core/",
+      "DynamicProperties\\Modules\\User\\": "src/Modules/User/",
+      "DynamicProperties\\Modules\\Product\\": "src/Modules/Product/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DynamicProperties\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  }
+}
