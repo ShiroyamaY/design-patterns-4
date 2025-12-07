@@ -11,7 +11,7 @@ class ApplyPremiumDiscountOperation implements EntityOperationInterface
 {
     private const float DEFAULT_PREMIUM_DISCOUNT_PERCENT = 15.0;
 
-    public function execute(Entity $entity, PropertyContainer $executionContext): mixed
+    public function execute(Entity $entity, PropertyContainer $executionContext): array
     {
         $isPremiumUser = $entity->getProperty(UserPropertyKeys::$IS_PREMIUM, false);
         $basePrice = $executionContext->getByName('base_price', 100.0);

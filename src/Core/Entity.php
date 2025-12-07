@@ -31,12 +31,23 @@ class Entity
         return $this->dynamicProperties;
     }
 
+    /**
+     * @template TValue
+     * @param PropertyKey<TValue> $propertyKey
+     * @param TValue $value
+     */
     public function setProperty(PropertyKey $propertyKey, mixed $value): self
     {
         $this->dynamicProperties->set($propertyKey, $value);
         return $this;
     }
 
+    /**
+     * @template TValue
+     * @param PropertyKey<TValue> $propertyKey
+     * @param TValue|null $defaultValue
+     * @return TValue|null
+     */
     public function getProperty(PropertyKey $propertyKey, mixed $defaultValue = null): mixed
     {
         return $this->dynamicProperties->get($propertyKey, $defaultValue);

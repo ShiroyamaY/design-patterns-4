@@ -11,12 +11,12 @@ class FormatUserInfoOperation implements EntityOperationInterface
 {
     public function execute(Entity $entity, PropertyContainer $executionContext): mixed
     {
-        $userEmail = $entity->getProperty(UserPropertyKeys::$EMAIL, 'not-specified');
-        $userAge = $entity->getProperty(UserPropertyKeys::$AGE, 'unknown');
-        $userPhone = $entity->getProperty(UserPropertyKeys::$PHONE, 'not-specified');
+        $userEmail = $entity->getProperty(UserPropertyKeys::$EMAIL);
+        $userAge = $entity->getProperty(UserPropertyKeys::$AGE);
+        $userPhone = $entity->getProperty(UserPropertyKeys::$PHONE);
         $isPremiumUser = $entity->getProperty(UserPropertyKeys::$IS_PREMIUM, false);
 
-        $premiumBadge = $isPremiumUser ? ' ⭐ [PREMIUM]' : '';
+        $premiumBadge = $isPremiumUser ? ' [PREMIUM]' : '';
 
         $formattedInfo = sprintf(
             "User #%d: %s%s\n" .
@@ -26,9 +26,9 @@ class FormatUserInfoOperation implements EntityOperationInterface
             $entity->getId(),
             $entity->getName(),
             $premiumBadge,
-            $userEmail,
-            $userAge,
-            $userPhone
+            $userEmail ?? 'not-specified',
+            $userAge !== null ? (string)$userAge : 'unknown',
+            $userPhone ?? 'not-specified'
         );
 
         return $formattedInfo;

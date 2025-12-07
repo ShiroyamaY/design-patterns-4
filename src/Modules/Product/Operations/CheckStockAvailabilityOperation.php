@@ -9,7 +9,7 @@ use DynamicProperties\Modules\Product\ProductPropertyKeys;
 
 class CheckStockAvailabilityOperation implements EntityOperationInterface
 {
-    public function execute(Entity $entity, PropertyContainer $executionContext): mixed
+    public function execute(Entity $entity, PropertyContainer $executionContext): array
     {
         $availableQuantity = $entity->getProperty(ProductPropertyKeys::$QUANTITY, 0);
         $requestedQuantity = $executionContext->getByName('requested_quantity', 1);

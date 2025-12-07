@@ -13,14 +13,30 @@ class PropertyContainer
      */
     private array $storageByStringKey = [];
 
+    /**
+     * @template TValue
+     * @param PropertyKey<TValue> $propertyKey
+     * @param TValue $value
+     */
     public function set(PropertyKey $propertyKey, mixed $value): self
     {
+        $propertyKey->assertValueType($value);
         $this->storageByIntegerId[$propertyKey->getId()] = $value;
         return $this;
     }
 
+    /**
+     * @template TValue
+     * @param PropertyKey<TValue> $propertyKey
+     * @param TValue|null $defaultValue
+     * @return TValue|null
+     */
     public function get(PropertyKey $propertyKey, mixed $defaultValue = null): mixed
     {
+        if ($defaultValue !== null) {
+            $propertyKey->assertValueType($defaultValue);
+        }
+
         return $this->storageByIntegerId[$propertyKey->getId()] ?? $defaultValue;
     }
 

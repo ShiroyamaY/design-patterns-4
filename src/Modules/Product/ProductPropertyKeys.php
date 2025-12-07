@@ -18,11 +18,11 @@ class ProductPropertyKeys
 
     public static function initialize(): void
     {
-        self::$PRICE = PropertyKey::create('product.price');
-        self::$QUANTITY = PropertyKey::create('product.quantity');
-        self::$CATEGORY = PropertyKey::create('product.category');
-        self::$SKU = PropertyKey::create('product.sku');
-        self::$WEIGHT = PropertyKey::create('product.weight');
+        self::$PRICE = PropertyKey::float('product.price');
+        self::$QUANTITY = PropertyKey::int('product.quantity');
+        self::$CATEGORY = PropertyKey::string('product.category');
+        self::$SKU = PropertyKey::string('product.sku');
+        self::$WEIGHT = PropertyKey::float('product.weight', true);
     }
 }
 

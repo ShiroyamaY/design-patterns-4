@@ -9,7 +9,7 @@ use DynamicProperties\Modules\Product\ProductPropertyKeys;
 
 class CalculateTotalPriceOperation implements EntityOperationInterface
 {
-    public function execute(Entity $entity, PropertyContainer $executionContext): mixed
+    public function execute(Entity $entity, PropertyContainer $executionContext): float
     {
         $productPrice = $entity->getProperty(ProductPropertyKeys::$PRICE, 0.0);
         $productQuantity = $entity->getProperty(ProductPropertyKeys::$QUANTITY, 0);

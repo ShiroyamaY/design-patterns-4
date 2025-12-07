@@ -9,7 +9,7 @@ use DynamicProperties\Modules\User\UserPropertyKeys;
 
 class CheckAdultOperation implements EntityOperationInterface
 {
-    public function execute(Entity $entity, PropertyContainer $executionContext): mixed
+    public function execute(Entity $entity, PropertyContainer $executionContext): bool
     {
         $userAge = $entity->getProperty(UserPropertyKeys::$AGE);
 

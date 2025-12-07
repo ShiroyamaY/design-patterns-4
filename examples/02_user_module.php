@@ -32,29 +32,29 @@ $userProcessor
 $priceContext = new PropertyContainer();
 $priceContext->setByName('base_price', 1000.0);
 
-echo "Regular User (Ivan Petrov)\n";
+echo "Обычный пользователь (Ivan Petrov)\n";
 $isAdult = $userProcessor->execute('check_adult', $regularUser);
-echo "Adult check: " . ($isAdult ? "Yes" : "No") . "\n";
+echo "Проверка совершеннолетия: " . ($isAdult ? "Да" : "Нет") . "\n";
 
 $userInfo = $userProcessor->execute('format_user_info', $regularUser);
-echo "Formatted info: " . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
+echo "Форматированная информация: " . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
 
 $discountInfo = $userProcessor->execute('apply_premium_discount', $regularUser, $priceContext);
-echo "Discount info: " . json_encode($discountInfo, JSON_PRETTY_PRINT) . "\n\n";
+echo "Информация о скидке: " . json_encode($discountInfo, JSON_PRETTY_PRINT) . "\n\n";
 
-echo "Premium User (Maria Ivanova)\n";
+echo "Премиум пользователь (Maria Ivanova)\n";
 $isAdult = $userProcessor->execute('check_adult', $premiumUser);
-echo "Adult check: " . ($isAdult ? "Yes" : "No") . "\n";
+echo "Проверка совершеннолетия: " . ($isAdult ? "Да" : "Нет") . "\n";
 
 $userInfo = $userProcessor->execute('format_user_info', $premiumUser);
-echo "Formatted info: " . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
+echo "Форматированная информация: " . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
 
 $discountInfo = $userProcessor->execute('apply_premium_discount', $premiumUser, $priceContext);
-echo "Discount info: " . json_encode($discountInfo, JSON_PRETTY_PRINT) . "\n\n";
+echo "Информация о скидке: " . json_encode($discountInfo, JSON_PRETTY_PRINT) . "\n\n";
 
-echo "Multiple Operations (Regular User)\n";
+echo "Несколько операций (Обычный пользователь)\n";
 $allResults = $userProcessor->executeMultiple(
     ['check_adult', 'format_user_info'],
     $regularUser
 );
-echo "Results: " . json_encode($allResults, JSON_PRETTY_PRINT) . "\n";
+echo "Результаты: " . json_encode($allResults, JSON_PRETTY_PRINT) . "\n";
